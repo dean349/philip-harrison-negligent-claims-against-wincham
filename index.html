@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philip Harrison — Wincham Negligence: Full Case Report</title>
+<style>
+  :root {
+    --navy: #0d1b2a; --navy2: #1b2d42; --gold: #c9933a; --gold2: #e8b45a;
+    --red: #d94f4f; --amber: #e07c2a; --green: #3aad6e; --text: #e8eaf0;
+    --muted: #9aa3b2; --card: #1e2f45; --border: #2a3f58;
+    --font: 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--navy); color: var(--text); font-family: var(--font); line-height: 1.7; }
+
+  /* NAV TABS */
+  .tab-nav { position: sticky; top: 0; z-index: 100; background: var(--navy2);
+    border-bottom: 2px solid var(--border); display: flex; overflow-x: auto; }
+  .tab-btn { padding: 14px 24px; font-size: 0.9rem; font-weight: 600;
+    border: none; background: none; color: var(--muted); cursor: pointer;
+    border-bottom: 3px solid transparent; transition: all .2s; white-space: nowrap; }
+  .tab-btn.active { color: var(--gold2); border-bottom-color: var(--gold); }
+  .tab-btn:hover { color: var(--text); }
+
+  /* SECTIONS */
+  .section { display: none; max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+  .section.active { display: block; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--navy2), #0a1520);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 40px; margin-bottom: 32px; text-align: center; }
+  .hero .stamp { display: inline-block; background: var(--red);
+    color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    padding: 4px 12px; border-radius: 4px; margin-bottom: 16px; }
+  .hero h1 { font-size: 1.9rem; font-weight: 700; color: var(--gold2); margin-bottom: 8px; }
+  .hero p { color: var(--muted); font-size: 0.95rem; }
+  .hero .sum { font-size: 2.4rem; font-weight: 800; color: var(--gold); margin: 16px 0 4px; }
+  .hero .sum-label { font-size: 0.85rem; color: var(--muted); }
+
+  /* CARDS */
+  .card { background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px; margin-bottom: 20px; }
+  .card h2 { font-size: 1.2rem; font-weight: 700; color: var(--gold2); margin-bottom: 14px; }
+  .card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin: 18px 0 8px; }
+  .card p { color: #c8d0dc; margin-bottom: 10px; font-size: 0.95rem; }
+  .card ul, .card ol { padding-left: 20px; color: #c8d0dc; font-size: 0.95rem; }
+  .card li { margin-bottom: 6px; }
+  .card a { color: var(--gold2); }
+
+  /* ALERTS */
+  .alert { padding: 16px 20px; border-radius: 8px; margin: 16px 0; font-size: 0.9rem; }
+  .alert-red { background: rgba(217,79,79,.12); border-left: 4px solid var(--red); }
+  .alert-amber { background: rgba(224,124,42,.12); border-left: 4px solid var(--amber); }
+  .alert-green { background: rgba(58,173,110,.12); border-left: 4px solid var(--green); }
+  .alert strong { display: block; margin-bottom: 4px; }
+  .alert-red strong { color: var(--red); }
+  .alert-amber strong { color: var(--amber); }
+  .alert-green strong { color: var(--green); }
+
+  /* STEPS */
+  .steps { counter-reset: step; }
+  .step { display: flex; gap: 16px; margin-bottom: 20px; }
+  .step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.1rem; }
+  .step-red .step-num { background: rgba(217,79,79,.2); color: var(--red); border: 2px solid var(--red); }
+  .step-amber .step-num { background: rgba(224,124,42,.2); color: var(--amber); border: 2px solid var(--amber); }
+  .step-body h3 { margin-top: 8px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 14px 0; }
+  th { background: var(--navy2); color: var(--gold2); padding: 10px 12px;
+    text-align: left; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: #c8d0dc; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.75rem; font-weight: 700; }
+  .badge-red { background: rgba(217,79,79,.2); color: #f08080; }
+  .badge-amber { background: rgba(224,124,42,.2); color: #f0a060; }
+  .badge-green { background: rgba(58,173,110,.2); color: #70d0a0; }
+
+  /* PRIORITY TABLE */
+  .pri-today { background: rgba(217,79,79,.06); }
+  .pri-week { background: rgba(224,124,42,.06); }
+  .pri-month { background: rgba(58,173,110,.06); }
+
+  /* QUANTUM BOX */
+  .quantum { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .q-box { background: var(--navy2); border-radius: 8px; padding: 20px; text-align: center; }
+  .q-box .label { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .q-box .amount { font-size: 1.6rem; font-weight: 800; }
+  .q-box.conservative .amount { color: var(--amber); }
+  .q-box.maximum .amount { color: var(--red); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 2px solid var(--border); margin: 32px 0; }
+
+  /* BADGE ROW */
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.8rem;
+    border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.4rem; }
+    .hero .sum { font-size: 1.8rem; }
+    .quantum { grid-template-columns: 1fr; }
+    .tab-btn { padding: 12px 16px; font-size: 0.82rem; }
+    .card { padding: 20px; }
+  }
+  @media print {
+    .tab-nav { display: none; }
+    .section { display: block !important; page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('plain')">📋 For Philip — Plain English</button>
+  <button class="tab-btn" onclick="showTab('legal')">⚖️ Legal Dossier</button>
+  <button class="tab-btn" onclick="showTab('letter')">📨 Letter of Claim</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 1 — PLAIN ENGLISH BRIEFING FOR PHILIP HARRISON
+     ═══════════════════════════════════════════════════════ -->
+<div id="tab-plain" class="section active">
+
+  <div class="hero">
+    <div class="stamp">PRIVATE &amp; CONFIDENTIAL — 31 MARCH 2026</div>
+    <h1>Dad — Here's What's Happened and What We Need to Do</h1>
+    <p>A clear, jargon-free explanation of the situation with your Lanzarote money<br>and exactly what needs to happen next.</p>
+    <div class="sum">£86,310 – £149,807</div>
+    <div class="sum-label">Estimated compensation owed to you by Wincham Accountants</div>
+  </div>
+
+  <!-- SECTION 1 — THE GOOD NEWS -->
+  <div class="card">
+    <div class="alert alert-green">
+      <strong>✅ The Good News First</strong>
+      The situation is serious — but it is fixable. The money is not lost. We have a clear, legal plan to recover everything and claim compensation from Wincham. You just need to follow the steps below.
+    </div>
+  </div>
+
+  <!-- SECTION 2 — WHAT HAPPENED -->
+  <div class="card">
+    <h2>🏡 What Happened — The Simple Version</h2>
+    <p>When you sold your Lanzarote property on 20 March 2026 for <strong>€315,000</strong>, that money should have gone into a <strong>bank account belonging to your company</strong> — Los Romeros Limited. But it didn't. It went straight into your <strong>personal bank account</strong>.</p>
+    <p>Now here's the thing: that property was owned by your company, not by you personally. So the money belongs to the company — not to you personally — until it's been properly handed over through a legal process.</p>
+    <p><strong>This wasn't your fault.</strong> Wincham Accountants were your company's accountants and company secretary. It was their job to make sure the money went to the right place. They failed completely to:</p>
+    <ul>
+      <li>Tell you that the money needed to go into a company bank account</li>
+      <li>Open a business bank account for Los Romeros Limited</li>
+      <li>Warn you what would happen if the money went to your personal account</li>
+    </ul>
+    <p>Because of their failure, you now have a tax problem that could cost you a lot of money — <strong>but only if we don't fix it quickly.</strong></p>
+  </div>
+
+  <!-- SECTION 3 — THE TAX PROBLEM -->
+  <div class="card">
+    <h2>💷 The Tax Problem — Why It Matters</h2>
+    <p>There was a perfectly legal way to take this money out of your company and pay only around <strong>18–24% in tax</strong>. It's called a Members' Voluntary Liquidation (MVL) — basically a formal, controlled way of closing the company and paying yourself the money.</p>
+    <p>Because the money went to your personal account first, the taxman could decide you've taken an unauthorised withdrawal from the company. If that happens, you could end up paying:</p>
+    <ul>
+      <li><strong>Up to 33.75% in income tax</strong> — instead of 18–24%</li>
+      <li>Or a big corporation tax charge on the company itself</li>
+    </ul>
+    <div class="alert alert-amber">
+      <strong>⚠️ The Extra Tax Risk</strong>
+      The difference between the best case (18–24% CGT via MVL) and the worst case (33.75% income tax) on around £265,000 could be <strong>£26,000–£89,000 in extra tax</strong>. This is all Wincham's fault — and it's all claimable from them.
+    </div>
+    <p>The good news: we can stop this from happening by acting now.</p>
+  </div>
+
+  <!-- SECTION 4 — THE RESCUE PLAN -->
+  <div class="card">
+    <h2>🛟 The Rescue Plan — What We Do Now</h2>
+    <p>There is a well-established legal method to put this right. Here's what it involves in plain English:</p>
+
+    <div class="steps">
+
+      <div class="step step-red">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3 style="color:var(--red)">🔴 Do NOT spend any of the money — TODAY</h3>
+          <p>The money in your personal account — roughly <strong>£265,000</strong> — must stay exactly where it is. Do not transfer it, invest it, or spend it on anything. It is still technically your company's money sitting in the wrong account. It needs to stay intact so we can move it correctly.</p>
+          <p><strong>Think of it like this:</strong> the money accidentally arrived at the wrong address. We need to forward it on to the right one. But we can only forward it if it hasn't been spent.</p>
+        </div>
+      </div>
+
+      <div class="step step-red">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3 style="color:var(--red)">🔴 Open a company bank account — THIS WEEK</h3>
+          <p>We need a business bank account in the name of <strong>Los Romeros Limited</strong>. You can open one online in 24–48 hours for free with <strong>Starling Bank</strong> (starlingbank.com/business) or <strong>Tide</strong> (tide.co).</p>
+          <p>You'll need to apply as the director, using your passport/driving licence, proof of address, and the company number: <strong>06993349</strong>. Dean can help you do this.</p>
+        </div>
+      </div>
+
+      <div class="step step-amber">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3 style="color:var(--amber)">🟠 Get an independent tax adviser — THIS WEEK</h3>
+          <p>We need a UK tax specialist — completely independent of Wincham — to confirm the rescue plan and document exactly how much extra tax Wincham's mistake has exposed you to. That extra tax damage gets added to the compensation claim against them.</p>
+          <p>Find one at: <strong>ciot.org.uk</strong> (Chartered Institute of Taxation)</p>
+        </div>
+      </div>
+
+      <div class="step step-amber">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3 style="color:var(--amber)">🟠 Appoint a Liquidator to wind up Los Romeros — THIS WEEK</h3>
+          <p>We need a licensed Insolvency Practitioner (IP) — again, completely independent of Wincham — to formally wind up Los Romeros Limited. This is a routine process called an MVL. They will:</p>
+          <ul>
+            <li>Officially record the money in your personal account as a "Director's Loan" from the company</li>
+            <li>Ask you to repay it into the Los Romeros company account</li>
+            <li>Then pay it back to you properly — as a capital payout — taxed at the lower CGT rate of 18–24%</li>
+          </ul>
+          <p>Find one at: <strong>r3.org.uk</strong> (trade body for insolvency professionals)</p>
+        </div>
+      </div>
+
+      <div class="step step-amber">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3 style="color:var(--amber)">🟠 Send the formal complaint letter to Wincham — THIS WEEK</h3>
+          <p>We have already drafted the formal legal letter (called a Pre-Action Protocol Letter) to Wincham Accountants. This letter tells them we are suing them and gives them the chance to settle. It has been updated to include this new failure — directing your company's money into the wrong account — on top of everything else they got wrong.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="alert alert-green">
+      <strong>✅ The Critical Deadline</strong>
+      You have until <strong>31 May 2027</strong> to complete the repayment and avoid the large corporation tax charge. That's 14 months. An MVL normally takes 6–12 months. You have enough time — but only if you start this week.
+    </div>
+  </div>
+
+  <!-- SECTION 5 — WHAT WINCHAM OWE YOU -->
+  <div class="card">
+    <h2>💰 What Wincham Owe You</h2>
+    <p>This is a summary of the total compensation we believe Wincham Accountants owe you, across two separate failures:</p>
+
+    <table>
+      <tr>
+        <th>What Wincham Got Wrong</th>
+        <th>Money Owed to You</th>
+      </tr>
+      <tr>
+        <td><strong>Failure 1 — Brexit advice (original claim)</strong><br>They never told you the company structure stopped working after Brexit, costing you years of wasted fees and a trapped tax credit</td>
+        <td>£44,369</td>
+      </tr>
+      <tr>
+        <td><strong>Failure 2 — Bank account (new claim)</strong><br>They never told you to open a company bank account, causing the money to go to your personal account — creating an unnecessary tax risk and extra professional fees to fix</td>
+        <td>£41,941 – £105,438</td>
+      </tr>
+      <tr style="background:var(--navy2)">
+        <td><strong>TOTAL ESTIMATED COMPENSATION</strong></td>
+        <td><strong style="color:var(--gold2)">£86,310 – £149,807</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION 6 — WHAT HAPPENS NEXT -->
+  <div class="card">
+    <h2>📅 Summary: What Needs to Happen and When</h2>
+    <table>
+      <tr><th>🔴 TODAY</th><th>Action</th></tr>
+      <tr class="pri-today"><td>Today</td><td>Do not spend any of the ~£265,000 in your personal account</td></tr>
+      <tr><th colspan="2">🟠 THIS WEEK</th></tr>
+      <tr class="pri-week"><td>This week</td><td>Open a Starling/Tide business account for Los Romeros Limited (Co. No. 06993349)</td></tr>
+      <tr class="pri-week"><td>This week</td><td>Instruct an independent tax adviser (CIOT.org.uk)</td></tr>
+      <tr class="pri-week"><td>This week</td><td>Instruct an independent Insolvency Practitioner to begin MVL (R3.org.uk)</td></tr>
+      <tr class="pri-week"><td>This week</td><td>Send the formal letter of claim to Wincham (Dean is coordinating)</td></tr>
+      <tr><th colspan="2">🟡 WITHIN 2 WEEKS</th></tr>
+      <tr class="pri-month"><td>2 weeks</td><td>File complaint with accounting regulator (ICAEW or ACCA)</td></tr>
+      <tr class="pri-month"><td>By 20 Jul 2026</td><td>File Spanish tax return (Modelo 210) to recover the €9,450 retention</td></tr>
+      <tr class="pri-month"><td>Before 31 May 2027</td><td>Repay Director's Loan into Los Romeros company account (IP will guide you)</td></tr>
+    </table>
+    <div class="alert alert-amber" style="margin-top:16px">
+      <strong>A note from Dean</strong>
+      I know this is a lot to take in. But you haven't done anything wrong — this is entirely Wincham's failure. We have a solid plan, we have the legal documentation ready, and we have time to fix it properly. The key is starting right now. Call me and we'll go through the bank account opening together.
+    </div>
+  </div>
+
+</div><!-- end tab-plain -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 2 — TECHNICAL LEGAL DOSSIER
+     ═══════════════════════════════════════════════════════ -->
+<div id="tab-legal" class="section">
+
+  <div class="hero">
+    <div class="stamp">PRIVATE &amp; CONFIDENTIAL — LEGALLY PRIVILEGED</div>
+    <h1>Technical Legal Dossier</h1>
+    <p>Wincham Accountants Ltd / Adrem Accounting Ltd — Professional Negligence &amp; Breach of Fiduciary Duty<br>Los Romeros Limited (Co. No. 06993349) | Philip Anthony Harrison</p>
+    <div class="sum">£149,807</div>
+    <div class="sum-label">Maximum quantum of claim — 31 March 2026</div>
+  </div>
+
+  <!-- CONFIRMED FACTS -->
+  <div class="card">
+    <h2>§1 — Confirmed Material Facts</h2>
+    <table>
+      <tr><th>Fact</th><th>Detail</th><th>Status</th></tr>
+      <tr><td>Property sale price</td><td>€315,000 gross (Lanzarote villa, completion 20 March 2026)</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+      <tr><td>3% AEAT retention (Modelo 211)</td><td>~€9,450 withheld at source</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+      <tr><td>Net proceeds received</td><td>~€305,550 (~£265,000 GBP) wired ~27 March 2026</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+      <tr><td>Account receiving funds</td><td><strong>Philip Harrison's personal bank account</strong> — NOT a Los Romeros Ltd corporate account</td><td><span class="badge badge-red">Confirmed Breach</span></td></tr>
+      <tr><td>Los Romeros Ltd corporate bank account</td><td>Did not exist at time of completion — Wincham/Adrem failed to advise on its necessity</td><td><span class="badge badge-red">Established</span></td></tr>
+      <tr><td>Company secretary at time of breach</td><td>Adrem Accounting Ltd (appointed 1 September 2025)</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+      <tr><td>Company year-end</td><td>31 August (accounts to 31 Aug 2025 filed 19 Dec 2025)</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+      <tr><td>S.455 charge deadline</td><td>1 June 2027 (9 months + 1 day after 31 Aug 2026 year-end)</td><td><span class="badge badge-amber">Active Risk</span></td></tr>
+    </table>
+  </div>
+
+  <!-- FIVE VIOLATIONS -->
+  <div class="card">
+    <h2>§2 — Five Independent Legal Violations</h2>
+
+    <h3>Violation 1 — Breach of Duty of Care: Failure to Advise on Corporate Banking</h3>
+    <div class="badge-row">
+      <span class="badge badge-red">SGSA 1982 s.13</span>
+      <span class="badge badge-red">Hedley Byrne [1964]</span>
+      <span class="badge badge-red">Bolam [1957]</span>
+    </div>
+    <p>No competent practitioner in UK company accountancy would permit the proceeds of a corporate property disposal to be received into a director's personal bank account without: (a) explicit written client instruction advising against it; (b) a written tax warning that personal receipt destroys the MVL/CGT route; and (c) ensuring a corporate account existed. The Bolam standard is plainly met — this is not a borderline professional judgement call. Wincham/Adrem's SIC 82990 and 69201 designations both place them squarely within the duty of care.</p>
+
+    <hr class="divider">
+
+    <h3>Violation 2 — Breach of Fiduciary Duty as Company Secretary</h3>
+    <div class="badge-row">
+      <span class="badge badge-red">CA 2006 s.174</span>
+      <span class="badge badge-red">CA 2006 s.172</span>
+      <span class="badge badge-red">Salomon [1897]</span>
+    </div>
+    <p>Adrem Accounting Ltd, as duly appointed company secretary from 1 September 2025, owed statutory duties directly to Los Romeros Limited as a legal entity. By failing to protect the company's primary asset — the cash proceeds of its only business activity — at the moment of realisation, Adrem committed a fundamental breach of s.174 CA 2006. The company secretary's core function is to safeguard the company's affairs; routing corporate funds to a personal account is the antithesis of that function.</p>
+
+    <hr class="divider">
+
+    <h3>Violation 3 — Breach of ICAEW/ACCA Client Money Regulations</h3>
+    <div class="badge-row">
+      <span class="badge badge-amber">ICAEW Client Money Regs</span>
+      <span class="badge badge-amber">ICAEW Code of Ethics</span>
+    </div>
+    <table>
+      <tr><th>Regulatory Obligation</th><th>Breach?</th></tr>
+      <tr><td>Segregation — client funds must be kept separate from personal money</td><td><span class="badge badge-red">Yes</span></td></tr>
+      <tr><td>Designated account for correct legal entity</td><td><span class="badge badge-red">Yes — no Los Romeros Ltd account used</span></td></tr>
+      <tr><td>No general banking facility for client accounts</td><td><span class="badge badge-red">Yes</span></td></tr>
+      <tr><td>Written authorisation for any movement of funds</td><td><span class="badge badge-amber">Requires disclosure</span></td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <h3>Violation 4 — Destruction of the MVL/CGT Route: Tax Damage</h3>
+    <div class="badge-row">
+      <span class="badge badge-red">CTA 2010 s.455</span>
+      <span class="badge badge-red">ITTOIA 2005 Part 4</span>
+      <span class="badge badge-red">CTA 2009</span>
+    </div>
+    <table>
+      <tr><th>Scenario</th><th>MVL Rate (Correct)</th><th>Personal Receipt Rate (Wrong)</th><th>Excess Tax Damage</th></tr>
+      <tr><td>Dividend treatment — higher rate band</td><td>24% CGT</td><td>33.75% dividend tax</td><td>~£20,963 + FTCR lost ~£15,978</td></tr>
+      <tr><td>Director's Loan — s.455 charge</td><td>N/A</td><td>33.75% × ~£265,000</td><td>~£89,438 (reclaimable on repayment)</td></tr>
+      <tr><td>Professional correction costs</td><td>N/A</td><td>IP + CTA + legal fees</td><td>£5,000–£15,000</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <h3>Violation 5 — Potential Fraud Act 2006 s.4 Exposure</h3>
+    <div class="badge-row">
+      <span class="badge badge-amber">Fraud Act 2006 s.4</span>
+      <span class="badge badge-amber">Abuse of Position</span>
+    </div>
+    <p>Wincham/Adrem occupied a position of trust in which they were expected to safeguard the financial interests of Los Romeros Limited and Philip Harrison. Section 4 fraud by abuse of position requires dishonesty — this threshold is not yet established on the facts. However, if disclosure reveals deliberate direction of funds to a personal account in full knowledge of the corporate separation principle, a referral to Action Fraud (actionfraud.police.uk) and/or the SFO should be considered. <strong>This line of inquiry should be expressly reserved in the Letter of Claim.</strong></p>
+  </div>
+
+  <!-- QUANTUM TABLE -->
+  <div class="card">
+    <h2>§3 — Quantum of Damages</h2>
+    <table>
+      <tr><th>Head of Loss</th><th>Basis</th><th>Amount</th></tr>
+      <tr><td colspan="3" style="background:var(--navy2);color:var(--gold2);font-weight:700">HEAD 1 — Brexit Advisory Failure</td></tr>
+      <tr><td>Trapped FTCR</td><td>Spanish CGT paid via Modelo 210; relief unavailable inside corporate wrapper</td><td>~£16,800</td></tr>
+      <tr><td>Wasted historical corporate fees</td><td>~6 years × ~£4,178/yr of Wincham annual fees paid while structure was defunct</td><td>£25,069</td></tr>
+      <tr><td>MVL professional costs (forced)</td><td>Independent IP required due to structural deficiency — not otherwise necessary</td><td>~£2,500</td></tr>
+      <tr style="background:var(--navy2)"><td colspan="2"><strong>Head 1 Subtotal</strong></td><td><strong style="color:var(--gold2)">£44,369</strong></td></tr>
+
+      <tr><td colspan="3" style="background:var(--navy2);color:var(--gold2);font-weight:700;padding-top:10px">HEAD 2 — Corporate Banking Failure (Conservative)</td></tr>
+      <tr><td>Excess tax rate: dividend vs CGT on ~£215,000</td><td>9.75% × £215,000 (portion above basic rate threshold)</td><td>~£20,963</td></tr>
+      <tr><td>FTCR credit lost under dividend treatment</td><td>Spanish Modelo 210 CGT of ~€18,783 (~£15,978) unavailable under dividend route</td><td>~£15,978</td></tr>
+      <tr><td>Professional rescue costs — conservative</td><td>Independent CTA + IP additional work + legal fees</td><td>~£5,000</td></tr>
+      <tr style="background:var(--navy2)"><td colspan="2"><strong>Head 2 Conservative Subtotal</strong></td><td><strong style="color:var(--amber)">~£41,941</strong></td></tr>
+
+      <tr><td colspan="3" style="background:var(--navy2);color:var(--gold2);font-weight:700;padding-top:10px">HEAD 2 — Corporate Banking Failure (Maximum — s.455 Treatment)</td></tr>
+      <tr><td>S.455 Corporation Tax charge</td><td>33.75% × ~£265,000 sterling equivalent of outstanding DLA</td><td>~£89,438</td></tr>
+      <tr><td>Professional rescue costs — maximum</td><td>IP, CTA, solicitor, compliance costs</td><td>~£15,000</td></tr>
+      <tr style="background:var(--navy2)"><td colspan="2"><strong>Head 2 Maximum Subtotal</strong></td><td><strong style="color:var(--red)">~£104,438</strong></td></tr>
+    </table>
+
+    <div class="quantum">
+      <div class="q-box conservative">
+        <div class="label">CONSERVATIVE TOTAL CLAIM</div>
+        <div class="amount">£86,310</div>
+        <div class="label" style="margin-top:4px">Head 1 + Head 2 (dividend treatment)</div>
+      </div>
+      <div class="q-box maximum">
+        <div class="label">MAXIMUM TOTAL CLAIM</div>
+        <div class="amount">£149,807</div>
+        <div class="label" style="margin-top:4px">Head 1 + Head 2 (s.455 DLA treatment)</div>
+      </div>
+    </div>
+
+    <div class="alert alert-amber">
+      <strong>Court Track Assessment</strong>
+      At the maximum quantum, this claim falls within the Business and Property Courts (BPC) rather than the County Court Multi-Track. At the conservative quantum it sits comfortably on Multi-Track (above £25,000). At either level, specialist professional negligence counsel should be instructed.
+    </div>
+  </div>
+
+  <!-- RESCUE ROUTE -->
+  <div class="card">
+    <h2>§4 — The Director's Loan Rescue Route: Preserving MVL/CGT Treatment</h2>
+    <div class="alert alert-green">
+      <strong>✅ The MVL dissolution route is not foreclosed</strong>
+      Personal receipt of corporate funds without dividend declaration is recognised by HMRC as giving rise to an overdrawn Director's Loan Account (DLA). An overdrawn DLA is a recoverable company asset. When repaid to a designated Los Romeros Ltd corporate account and subsequently distributed by the IP, the distribution retains its character as a capital receipt — preserving CGT treatment at 18–24% and allowing FTCR recovery.
+    </div>
+    <table>
+      <tr><th>Step</th><th>Action</th><th>Responsible</th><th>Deadline</th></tr>
+      <tr class="pri-today"><td>1</td><td>Philip Harrison ceases all expenditure from personal account (~£265,000 must remain intact)</td><td>Philip Harrison</td><td><strong>TODAY</strong></td></tr>
+      <tr class="pri-week"><td>2</td><td>Open Los Romeros Limited corporate bank account (Starling/Tide — 24–48hr, free, Co. No. 06993349)</td><td>Philip Harrison / Dean</td><td>This week</td></tr>
+      <tr class="pri-week"><td>3</td><td>Instruct independent UK CTA — validate rescue route, document tax damage for claim</td><td>Dean / Philip</td><td>This week</td></tr>
+      <tr class="pri-week"><td>4</td><td>Instruct independent Insolvency Practitioner — commence MVL (R3.org.uk; ICAEW Licensed IPs)</td><td>Dean / Philip</td><td>This week</td></tr>
+      <tr class="pri-week"><td>5</td><td>Issue Amended Pre-Action Protocol Letter of Claim to Wincham Accountants Limited</td><td>Instructed solicitor</td><td>This week</td></tr>
+      <tr class="pri-month"><td>6</td><td>File ICAEW/ACCA regulatory complaint (confirm registration at find.icaew.com first)</td><td>Dean / Solicitor</td><td>Within 2 weeks</td></tr>
+      <tr class="pri-month"><td>7</td><td>File Modelo 210 (Spanish CGT return) via gestoria — recover ~€9,450 AEAT retention</td><td>Spanish gestoria</td><td>By 20 Jul 2026</td></tr>
+      <tr class="pri-month"><td>8</td><td>Philip repays DLA to Los Romeros Ltd corporate account (when IP formally instructs)</td><td>Philip Harrison</td><td>Before 31 May 2027</td></tr>
+    </table>
+
+    <div class="alert alert-red">
+      <strong>⚠️ Anti-Avoidance Note (HMRC "Bed &amp; Breakfasting" Rule)</strong>
+      HMRC has strict anti-avoidance rules preventing temporary DLA repayments made solely to avoid s.455. Any repayment must be permanent and must not be re-drawn within 30 days. The IP will ensure compliance. Philip Harrison must not draw any funds from the Los Romeros corporate account after repaying the DLA.
+    </div>
+  </div>
+
+  <!-- LIMITATION -->
+  <div class="card">
+    <h2>§5 — Limitation Analysis</h2>
+    <table>
+      <tr><th>Head</th><th>Limitation Basis</th><th>Date Knowledge Acquired</th><th>Status</th></tr>
+      <tr><td>Head 1 — Brexit Advisory Failure</td><td>Limitation Act 1980, s.14A (date of knowledge)</td><td>March 2026 — upon independent audit revealing structural defecting</td><td><span class="badge badge-green">Within time</span></td></tr>
+      <tr><td>Head 2 — Corporate Banking Failure</td><td>Limitation Act 1980, s.2 (6 years from breach date)</td><td>27 March 2026 — date of personal receipt of funds</td><td><span class="badge badge-green">Fresh breach — 6-yr clock from 27 Mar 2026</span></td></tr>
+    </table>
+  </div>
+
+  <!-- DEFENCE REBUTTAL -->
+  <div class="card">
+    <h2>§6 — Anticipated Defendant Defences &amp; Rebuttals</h2>
+    <table>
+      <tr><th>Anticipated Defence</th><th>Rebuttal</th></tr>
+      <tr><td>"Philip Harrison authorised the personal transfer in writing"</td><td>Request full written authorisation under disclosure. If none exists, this defence collapses entirely. Even if Philip gave verbal instruction, Wincham owed a duty to advise against it and warn of tax consequences in writing — the duty to advise is non-delegable.</td></tr>
+      <tr><td>"Philip could have asked us to open a corporate account himself"</td><td>Bolam — the duty to advise rests with the professional, not the lay client. The client does not need to ask the right question. The defendant held themselves out as an expert in UK-Spain corporate structures.</td></tr>
+      <tr><td>"The DLA rescue route is available — no harm done"</td><td>The harm is the cost, risk, and complexity of executing the rescue. IP fees, CTA fees, legal fees, and the ongoing DLA/s.455 risk are all attributable losses flowing from the breach. A client who suffers no loss from a breach has no claim; a client who must spend money to mitigate a breach recovers those mitigation costs.</td></tr>
+      <tr><td>"The funds are the same amount regardless of which account"</td><td>Legally incorrect. The funds were the property of Los Romeros Limited. Personal receipt without MVL documentation constitutes a DLA or informal dividend — a materially different legal characterisation with significant adverse tax consequences.</td></tr>
+      <tr><td>"Spanish property transfers don't work like that"</td><td>The destination of the wire transfer is governed by UK company law and UK professional regulatory obligations, not Spanish property conveyancing law. The Defendant is a UK-registered professional subject to UK statutory and regulatory duties.</td></tr>
+    </table>
+  </div>
+
+  <!-- REGULATORY COMPLAINTS -->
+  <div class="card">
+    <h2>§7 — Parallel Regulatory Complaint Routes</h2>
+    <table>
+      <tr><th>Body</th><th>Grounds</th><th>URL</th></tr>
+      <tr><td><strong>ICAEW</strong> (if Adrem/Wincham members)</td><td>Breach of Clients' Money Regulations; failure to maintain designated corporate accounts; professional misconduct in handling of corporate funds</td><td>icaew.com/complaints</td></tr>
+      <tr><td><strong>ACCA</strong> (if applicable)</td><td>Same as ICAEW grounds</td><td>accaglobal.com/professional-standards</td></tr>
+      <tr><td><strong>Companies House</strong></td><td>Any unauthorised filings; failure to maintain company secretary obligations</td><td>companieshouse.gov.uk/support</td></tr>
+      <tr><td><strong>HMRC</strong></td><td>If Wincham scheme facilitated unpaid Modelo 210 deemed income tax 2020–2025</td><td>hmrc.gov.uk/reportevasion</td></tr>
+      <tr><td><strong>Action Fraud</strong></td><td>Only if dishonesty under Fraud Act 2006 s.4 is established on evidence post-disclosure</td><td>actionfraud.police.uk</td></tr>
+    </table>
+    <p style="margin-top:12px"><strong>To identify Adrem's regulatory body:</strong> Visit <a href="https://find.icaew.com" target="_blank">find.icaew.com</a> and search "Adrem Accounting". If not listed, check <a href="https://www.accaglobal.com/gb/en/member/find-an-accountant.html" target="_blank">accaglobal.com/find-an-accountant</a>.</p>
+  </div>
+
+</div><!-- end tab-legal -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TAB 3 — LETTER OF CLAIM
+     ═══════════════════════════════════════════════════════ -->
+<div id="tab-letter" class="section">
+
+  <div class="hero">
+    <div class="stamp">STRICTLY PRIVATE &amp; CONFIDENTIAL — WITHOUT PREJUDICE SAVE AS TO COSTS</div>
+    <h1>Letter of Claim — Amended Version 2.0</h1>
+    <p>Pre-Action Protocol for Professional Negligence | Civil Procedure Rules<br>31 March 2026 | Revised Quantum: £86,310 – £149,807</p>
+  </div>
+
+  <div class="card">
+    <table style="margin-bottom:20px">
+      <tr><th>To</th><td>Wincham Accountants Limited / Adrem Accounting Ltd / The Wincham Group<br>Wincham House, Greenfield Farm Trading Estate, Congleton, Cheshire CW12 4TR</td></tr>
+      <tr><th>From</th><td>Philip Anthony Harrison (Claimant), Sheffield</td></tr>
+      <tr><th>Date</th><td>31 March 2026</td></tr>
+      <tr><th>Re</th><td>Professional Negligence, Breach of Fiduciary Duty &amp; Breach of Company Secretarial Duty — Los Romeros Limited (Co. No. 06993349)</td></tr>
+      <tr><th>Protocol</th><td>Pre-Action Protocol for Professional Negligence (CPR)</td></tr>
+    </table>
+
+    <div class="alert alert-red">
+      <strong>⚠️ For Your Professional Indemnity Insurers</strong>
+      You are required to forward a copy of this Letter of Claim to your Professional Indemnity Insurers immediately upon receipt. This letter supersedes the Letter of Claim dated 28 March 2026 and incorporates a second, concurrent and independent head of negligence.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>1. Executive Summary &amp; Revised Value of Claim</h2>
+    <p>The Claimant seeks damages currently estimated at <strong>£86,310</strong> (conservative basis), and potentially up to <strong>£149,807</strong> (maximum basis), plus interest under Section 69 of the County Courts Act 1984, and legal costs.</p>
+    <p>This claim arises from <strong>two independent, concurrent heads of professional negligence and breach of duty:</strong></p>
+    <ul>
+      <li><strong>Head 1 — Brexit Advisory Failure (£44,369):</strong> Failure to advise on the collapse of the Wincham Scheme following Brexit, trapping FTCR and necessitating an expensive MVL.</li>
+      <li><strong>Head 2 — Corporate Banking Failure (£41,941–£105,438):</strong> Failure, as company accountant and company secretary of Los Romeros Limited, to advise the Claimant to open a corporate bank account before completion, and the subsequent direction or permission for corporate sale proceeds to be received into the Claimant's personal bank account rather than a designated corporate account.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>2. Chronology of Events</h2>
+    <h3>2.1 Pre-Completion Background (2009–March 2026)</h3>
+    <ol>
+      <li><strong>The Wincham Scheme:</strong> The Defendant promoted, established, and administered Los Romeros Limited (Co. No. 06993349) for the sole purpose of holding a Lanzarote residential property to mitigate Spanish succession and wealth taxes. The Defendant's group entities were the sole provider of accounting, administrative, and secretarial services throughout.</li>
+      <li><strong>Assumption of Responsibility:</strong> The Defendant acted as retained accountants, tax advisers, and company secretaries, assuming a continuous duty to advise on the ongoing viability of this structure.</li>
+      <li><strong>Brexit — Material Tax Change:</strong> Following Brexit, the tax efficiency of the Wincham Scheme collapsed. The Spanish IRNR rules fundamentally changed, destroying the mechanism for tax-efficient capital extraction to the UK.</li>
+      <li><strong>Failure to Advise (Head 1):</strong> At no point following the 2016 referendum, nor the expiration of the Brexit transition period on 31 December 2020, did the Defendant proactively advise the Claimant of this material detriment or devise an exit strategy.</li>
+    </ol>
+    <h3>2.2 Post-Completion Events — The New Head of Claim (20–27 March 2026)</h3>
+    <ol start="5">
+      <li><strong>Completion:</strong> The Lanzarote property was sold for <strong>€315,000 gross</strong> on 20 March 2026. The net proceeds (after the 3% AEAT retention of ~€9,450 via Modelo 211) became the property of Los Romeros Limited — not Philip Harrison personally.</li>
+      <li><strong>Failure to Advise on Corporate Banking (Head 2):</strong> The Defendant failed entirely to: advise that proceeds belonged to the company; ensure a corporate bank account for Los Romeros Limited existed; instruct the Spanish notary to wire to a corporate account; or warn the Claimant of the tax consequences of personal receipt.</li>
+      <li><strong>Personal Receipt — Confirmed:</strong> The net proceeds were received into <strong>Philip Harrison's personal bank account</strong> on approximately 27 March 2026. This is a confirmed fact. It is a direct consequence of the Defendant's failure.</li>
+      <li><strong>Tax Damage — Ongoing:</strong> The arrival of corporate funds in a personal account has created a Director's Loan Account position on Los Romeros Limited's books, with potential s.455 CTA 2010 and income tax exposure, all flowing from the Defendant's breach.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>3. Legal Basis</h2>
+    <h3>Head 1 — Professional Negligence (Brexit)</h3>
+    <ul>
+      <li>Supply of Goods and Services Act 1982, s.13 — failure to carry out advisory services with reasonable care and skill</li>
+      <li>Common Law Duty of Care — <em>Hedley Byrne &amp; Co Ltd v Heller &amp; Partners Ltd</em> [1964] AC 465</li>
+    </ul>
+    <h3>Head 2 — Professional Negligence (Corporate Banking)</h3>
+    <ul>
+      <li>Supply of Goods and Services Act 1982, s.13 — <em>Bolam v Friern Hospital Management Committee</em> [1957] 1 WLR 582</li>
+      <li>Companies Act 2006, s.174 — Adrem, as company secretary from 1 Sept 2025, failed to protect the company's primary asset</li>
+      <li>Companies Act 2006, s.172 — Duty to promote the success of the company</li>
+      <li>ICAEW Clients' Money Regulations — fundamental breach: corporate funds routed through personal account</li>
+      <li><em>Salomon v A Salomon &amp; Co Ltd</em> [1897] AC 22 — the company is a distinct legal entity; its assets belong to it until lawfully distributed</li>
+    </ul>
+    <h3>Limitation</h3>
+    <ul>
+      <li><strong>Head 1:</strong> Limitation Act 1980, s.14A (date of knowledge — March 2026)</li>
+      <li><strong>Head 2:</strong> Limitation Act 1980, s.2 — fresh breach 27 March 2026; 6-year limitation runs from that date</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>4. Quantum of Loss</h2>
+    <table>
+      <tr><th>Head</th><th>Item</th><th>Amount</th></tr>
+      <tr><td rowspan="3"><strong>Head 1</strong></td><td>Trapped FTCR</td><td>~£16,800</td></tr>
+      <tr><td>Wasted historical corporate fees</td><td>£25,069</td></tr>
+      <tr><td>MVL professional costs (forced)</td><td>~£2,500</td></tr>
+      <tr><td colspan="2"><strong>Head 1 Total</strong></td><td><strong>£44,369</strong></td></tr>
+      <tr><td rowspan="3"><strong>Head 2 (Conservative)</strong></td><td>Excess tax — dividend vs CGT on ~£215,000</td><td>~£20,963</td></tr>
+      <tr><td>FTCR lost under dividend treatment</td><td>~£15,978</td></tr>
+      <tr><td>Professional rescue costs</td><td>~£5,000</td></tr>
+      <tr><td colspan="2"><strong>Head 2 Conservative Total</strong></td><td><strong>~£41,941</strong></td></tr>
+      <tr><td rowspan="2"><strong>Head 2 (Maximum)</strong></td><td>S.455 Corporation Tax charge (33.75% × ~£265,000)</td><td>~£89,438</td></tr>
+      <tr><td>Professional rescue costs — maximum</td><td>~£15,000</td></tr>
+      <tr><td colspan="2"><strong>Head 2 Maximum Total</strong></td><td><strong>~£104,438</strong></td></tr>
+      <tr style="background:var(--navy2)"><td colspan="2"><strong>TOTAL CLAIM — Conservative</strong></td><td><strong style="color:var(--amber)">£86,310</strong></td></tr>
+      <tr style="background:var(--navy2)"><td colspan="2"><strong>TOTAL CLAIM — Maximum</strong></td><td><strong style="color:var(--red)">£149,807</strong></td></tr>
+    </table>
+    <p style="margin-top:12px;color:var(--muted);font-size:0.85rem">The Claimant reserves the right to update these figures following independent Chartered Tax Adviser assessment of the final HMRC treatment of the personal receipt.</p>
+  </div>
+
+  <div class="card">
+    <h2>5. Information Requests</h2>
+    <p>In addition to the information requested in the Letter of Claim dated 28 March 2026, the Defendant is hereby required to provide within 21 days of acknowledgment:</p>
+    <ol>
+      <li>All wire instruction correspondence sent to or received from the Spanish notary, gestoria, or buyer's solicitor regarding the destination account for Los Romeros Limited's sale proceeds</li>
+      <li>Any written advice given to Philip Harrison regarding the opening of a corporate bank account for Los Romeros Limited</li>
+      <li>Any written client instruction from Philip Harrison authorising remittance of corporate sale proceeds to his personal bank account</li>
+      <li>Full accounting records for Los Romeros Limited as at 31 March 2026, including any Director's Loan Account balance</li>
+      <li>Confirmation of ICAEW and/or ACCA membership and the name of the responsible qualified principal overseeing the engagement</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>6. Demands &amp; Next Steps</h2>
+    <ol>
+      <li>You are required to <strong>acknowledge receipt</strong> of this letter within <strong>21 days</strong> of service.</li>
+      <li>Failure to acknowledge will result in the Claimant commencing Court proceedings without further notice and applying for costs sanctions.</li>
+      <li>Provide a detailed <strong>Letter of Response</strong> within <strong>3 months</strong> of acknowledgment, stating whether liability is admitted in full, admitted in part, or denied on each head separately.</li>
+      <li><strong>Preserve all records</strong> pertaining to Los Romeros Limited immediately — all internal communications, client files, wire instructions, and compliance documentation.</li>
+    </ol>
+    <div class="alert alert-amber" style="margin-top:20px">
+      <strong>ADR &amp; Litigation Readiness</strong>
+      The Claimant remains open to Alternative Dispute Resolution and Mediation. Should the Defendant fail to engage meaningfully, the Claimant is fully prepared to issue a Claim Form (N1) in the Business and Property Courts and to instruct specialist professional negligence counsel. Public precedents exist for claims against the Wincham Group, and the Claimant is in contact with other former Wincham scheme clients who may be pursuing related claims. We note that Michael Harper at Crown Office Chambers successfully litigated against the Wincham International structure in <em>Vilintone v Wincham International</em>.
+    </div>
+    <div style="margin-top:32px;border-top:1px solid var(--border);padding-top:20px">
+      <p>Yours faithfully,</p>
+      <br>
+      <p><strong>Philip Harrison</strong><br><em>per independent Legal Representatives</em></p>
+      <br>
+      <p style="color:var(--muted);font-size:0.85rem"><em>Enclosures: Master Forensic Research Report (28 March 2026); Corporate Banking Liability Analysis (31 March 2026); Emergency Rescue Briefing (31 March 2026)</em></p>
+    </div>
+  </div>
+
+</div><!-- end tab-letter -->
+
+<footer>
+  <p>Philip Harrison v Wincham Accountants Limited / Adrem Accounting Ltd | Los Romeros Limited (Co. No. 06993349)</p>
+  <p style="margin-top:6px">Prepared 31 March 2026 | Private &amp; Confidential | Not a substitute for independent legal advice</p>
+  <p style="margin-top:6px">This document consolidates: Wincham Corporate Banking Liability Report · Emergency Rescue Briefing · Amended Pre-Action Protocol Letter of Claim</p>
+</footer>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
